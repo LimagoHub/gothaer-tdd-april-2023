@@ -1,30 +1,33 @@
 package de.gothaer.collections;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Stapel {
 
-    private int data[];
-    private int index;
+    private List<Integer> data;
+
 
     public Stapel() {
-        data = new int[10];
-        index = 0;
+        data = new ArrayList<>();
+
     }
 
     public void push(int value) throws StapelException {
         if(isFull()) throw new StapelException("Overflow");
-        data[index++] = value;
+        data.add(value);
     }
 
     public int pop() throws StapelException {
         if(isEmpty()) throw new StapelException("Underflow");
-        return data[--index];
+        return data.remove(data.size()-1);
     }
 
     public boolean isEmpty() {
-        return index == 0;
+        return data.isEmpty();
     }
 
     public boolean isFull() {
-        return index == data.length;
+        return data.size() >= 10;
     }
 }
