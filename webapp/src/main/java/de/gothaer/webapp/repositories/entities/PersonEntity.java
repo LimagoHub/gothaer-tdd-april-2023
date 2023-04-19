@@ -8,7 +8,6 @@ import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-
 import java.util.Objects;
 
 @Getter
@@ -31,11 +30,11 @@ public class PersonEntity {
     private String nachname;
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        PersonEntity person = (PersonEntity) o;
-        return id != null && Objects.equals(id, person.id);
+        final PersonEntity that = (PersonEntity) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override
@@ -43,3 +42,5 @@ public class PersonEntity {
         return getClass().hashCode();
     }
 }
+
+

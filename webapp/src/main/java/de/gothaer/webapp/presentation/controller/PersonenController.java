@@ -26,7 +26,7 @@ public class PersonenController {
     @ApiResponse(responseCode = "400", description = "Falsches Format")
     @ApiResponse(responseCode = "500", description = "interner Serverfehler")
 
-    @GetMapping(path="/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(path="/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<PersonDTO> findPersonById(@PathVariable String id) throws PersonenServiceException {
         return ResponseEntity.of(service.findeNachId(id).map(mapper::convert));
     }
@@ -55,13 +55,5 @@ public class PersonenController {
         var uri = builder.path("/v1/personen/{id}").buildAndExpand(person.getId());
         return ResponseEntity.created(uri.toUri()).build();
     }
-//    @PostMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Void> saveOrUpdate(@RequestBody PersonDTO person, UriComponentsBuilder builder) throws PersonenServiceException{
-//
-//        person.setId(UUID.randomUUID().toString());
-//        var uri = builder.path("/v1/personen/{id}").buildAndExpand(person.getId());
-//
-//        service.speichernOderAendern(mapper.convert(person));
-//        return ResponseEntity.created(uri.toUri()).build();
-//    }
+
 }
