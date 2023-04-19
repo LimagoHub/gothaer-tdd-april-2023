@@ -91,4 +91,32 @@ class Euro2DollarPresenterImplTest {
         objectUnderTest.onRechnen();
         verify(viewMock).setDollar("4711,00");
     }
+
+    @Test
+    void updateRechnenActionState_nullValueInEuroField_rechnenActionDisabled() {
+        when(viewMock.getEuro()).thenReturn(null);
+        objectUnderTest.updateRechnenActionState();
+        verify(viewMock,times(1)).setRechnenEnabled(false);
+    }
+
+    @Test
+    void updateRechnenActionState_NanValueInEuroField_rechnenActionDisabled() {
+        when(viewMock.getEuro()).thenReturn("Not a Number");
+        objectUnderTest.updateRechnenActionState();
+        verify(viewMock,times(1)).setRechnenEnabled(false);
+    }
+
+    @Test
+    void updateRechnenActionState_trailingNumbersValueInEuroField_rechnenActionDisabled() {
+        when(viewMock.getEuro()).thenReturn("100x");
+        objectUnderTest.updateRechnenActionState();
+        verify(viewMock,times(1)).setRechnenEnabled(false);
+    }
+
+    @Test
+    void updateRechnenActionState_validValueInEuroField_rechnenActionEnabled() {
+        when(viewMock.getEuro()).thenReturn(VALID_EURO_VALUE);
+        objectUnderTest.updateRechnenActionState();
+        verify(viewMock,times(1)).setRechnenEnabled(true);
+    }
 }

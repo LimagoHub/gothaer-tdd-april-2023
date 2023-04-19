@@ -94,6 +94,12 @@ public class Euro2DollarPresenterImpl implements Euro2DollarPresenter {
 
 	@Override
 	public void updateRechnenActionState() {
+		try {
+			Double.valueOf(view.getEuro());
+			view.setRechnenEnabled(true);
+		} catch (NullPointerException | NumberFormatException e) {
+			view.setRechnenEnabled(false);
+		}
 
 
 	}
