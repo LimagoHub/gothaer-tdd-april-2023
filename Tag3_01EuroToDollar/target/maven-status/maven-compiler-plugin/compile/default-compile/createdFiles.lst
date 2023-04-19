@@ -1,0 +1,8 @@
+de\goodyear\gui\Euro2DollarRechnerView$1.class
+de\goodyear\gui\presenter\IEuro2DollarPresenter.class
+de\goodyear\model\Euro2DollarRechnerImpl.class
+de\goodyear\gui\IEuro2DollarRechnerView.class
+de\goodyear\gui\presenter\Euro2DollarPresenter.class
+de\goodyear\application\Main.class
+de\goodyear\model\IEuro2DollarRechner.class
+de\goodyear\gui\Euro2DollarRechnerView.class
